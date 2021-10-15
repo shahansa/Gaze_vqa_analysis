@@ -1,0 +1,3 @@
+[submodule "scripts/mcan_attention_visualization"]
+	path = scripts/mcan_attention_visualization
+	url = https://github.com/shahansa/mcan_attention_visualization.git
