@@ -20,7 +20,7 @@ Downloads and unpacks necessary datasets into `gaze_vqa_analysis/data/`
 
 https://awma1-my.sharepoint.com/:f:/g/personal/yuz_l0_tn/EsfBlbmK1QZFhCOFpr4c5HUBzUV0aH2h1McnPG1jWAxytQ
 
-
+https://drive.google.com/file/d/1iDsjZmNVrkGG-21HqpePZMhWOrraet__/view
 ### 2. Gaze to image bounding box mapping and plotting
 
 #### Usage
