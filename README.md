@@ -36,7 +36,7 @@ Download [eye-gaze dataset](https://drive.google.com/file/d/1iDsjZmNVrkGG-21Hqpe
 
 #### Usage
 ```python
-python plot_quantized_gaze.py --save_path=<save_path> --input_fixations=<input_fixations csv> --vqa_questions_path=<path to vqa questions json> --vqa_images_path=<vqa_images_path> --vqa_image_features_path=<path to image bottom up features>
+python3 plot_quantized_gaze.py --save_path=<save_path> --input_fixations=<input_fixations csv> --vqa_questions_path=<path to vqa questions json> --vqa_images_path=<vqa_images_path> --vqa_image_features_path=<path to image bottom up features>
 ```
 #### Arguments and Description
 |Argument |Data Type |Default |Description|
@@ -50,7 +50,7 @@ python plot_quantized_gaze.py --save_path=<save_path> --input_fixations=<input_f
 ### 3. Model attention visualization for MCAN
 #### Usage
 ```python
-python mcan_attention_visualization/img_attn_visualization.py
+python3 mcan_attention_visualization/img_attn_visualization.py
 ```
 
 #### Useful poointers for variables used in code
