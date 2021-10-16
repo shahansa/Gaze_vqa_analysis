@@ -1,6 +1,9 @@
 # Do you see what I see? 
 Code related to Eye-gaze based analysis on VQA
 
+## Dataset
+Download from [shared link](https://drive.google.com/file/d/1iDsjZmNVrkGG-21HqpePZMhWOrraet__/view)
+
 ## Dataset Columns
 
 |Column Name|Data Type |Description|
@@ -29,7 +32,7 @@ Downloads and unpacks necessary datasets into `gaze_vqa_analysis/data/`
 
 Additionally download [bottom up image features](https://awma1-my.sharepoint.com/:f:/g/personal/yuz_l0_tn/EsfBlbmK1QZFhCOFpr4c5HUBzUV0aH2h1McnPG1jWAxytQ)  into `data/features_val2014`
 
-##### Eye-gaze data associated with this project
+##### Eye-gaze data associated with this project:
 Download [eye-gaze dataset](https://drive.google.com/file/d/1iDsjZmNVrkGG-21HqpePZMhWOrraet__/view)  and keep the csv in `data/`
 
 ### 2. Gaze to image bounding box mapping and plotting
