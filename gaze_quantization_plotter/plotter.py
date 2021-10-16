@@ -102,11 +102,11 @@ class Plotter:
 
         :return:
         """
-        index = 70
-        question_ids = self.fpq_df['QuestionId'].tolist()
-        ques_id = question_ids[index]
-        img_path, img_features_path = self.get_image_and_feat_path(ques_id)
-        self.plot(img_path, img_features_path, ques_id, index)
+        for index in range(self.fpq_df.shape[0]):
+            question_ids = self.fpq_df['QuestionId'].tolist()
+            ques_id = question_ids[index]
+            img_path, img_features_path = self.get_image_and_feat_path(ques_id)
+            self.plot(img_path, img_features_path, ques_id, index)
 
 
 
