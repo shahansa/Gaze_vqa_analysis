@@ -50,6 +50,8 @@ python3 plot_quantized_gaze.py --save_path=<save_path> --input_fixations=<input_
 |vqa_images_path|str|`data/val2014`|path to input images VQA V2.0|
 |vqa_image_features_path|str|`data/features_val2014`|path to image bottom up features|
 
+#### Sample Output
+![sample output](https://github.com/shahansa/Gaze_vqa_analysis/blob/main/images/P1_9_448426000.png?raw=true)
 ### 3. Model attention visualization for MCAN
 #### Usage
 ```python
