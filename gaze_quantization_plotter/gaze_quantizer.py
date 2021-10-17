@@ -7,7 +7,7 @@ class GazeToObject:
     Gaze to image object features mapping
     """
 
-    def __init__(self, bboxes, fixations_df, gaze_to_bbox_thresh=0.90):
+    def __init__(self, bboxes, fixations_df, gaze_to_bbox_thresh=0.60):
         self.bboxes = bboxes
         self.fpq_df = fixations_df
         img_orig_x = self.fpq_df['ImageOrigin_x'].tolist()

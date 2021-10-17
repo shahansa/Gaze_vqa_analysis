@@ -6,14 +6,17 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-from .gaze_quantizer import  GazeToObject
+from tqdm import tqdm
+from .gaze_quantizer import GazeToObject
 
 plt.rcParams['figure.figsize'] = (8.0, 8.0)
+
 
 class Plotter:
     """
     plot relevant bounding boxes on top of images and export them to a file
     """
+
     def __init__(self, args):
         self.save_path = args.save_path
         self.input_fixations = args.input_fixations
@@ -22,7 +25,8 @@ class Plotter:
         self.vqa_image_features_path = args.vqa_image_features_path
         self.fpq_df, self.ques_data = self.build_tables()
         self.question_image_by_id = self.build_question_index()
-
+        self.participant_id = self.fpq_df['ParticipantId'].tolist()
+        os.makedirs(self.save_path, exist_ok=True)
 
     def build_tables(self):
         """
@@ -30,6 +34,8 @@ class Plotter:
         :return:
         """
         fpq_df = pd.read_csv(self.input_fixations)
+        fpq_df = fpq_df[fpq_df['QuestionId'].notna()]
+        fpq_df['QuestionId'] = fpq_df['QuestionId'].astype(int)
         with open(self.vqa_questions_path) as fd:
             ques_data = json.load(fd)
         return fpq_df, ques_data
@@ -58,13 +64,14 @@ class Plotter:
         final_img_feat_path = os.path.join(self.vqa_image_features_path, f"{image_prefix}{image_id}.jpg.npz")
         return final_img_path, final_img_feat_path
 
-    def plot(self, img_path, img_features_path, ques_id, index):
+    def plot(self, img_path, img_features_path, ques_id, index, pid):
         """
 
-        :param img_path:
-        :param img_features_path:
-        :param ques_id:
-        :param index:
+        :param img_path: path to vqa image
+        :param img_features_path: path to npz of bottom up features
+        :param ques_id: question id as per vqa
+        :param index: iterator index
+        :param pid: participant id
         :return:
         """
         question = self.question_image_by_id[ques_id][1]
@@ -94,7 +101,7 @@ class Plotter:
         gca.imshow(white_wash, interpolation='bicubic')
         gca.axis('off')
         fig.suptitle(question)
-        save_path = os.path.join(self.save_path, f"{index}_{ques_id}.png")
+        save_path = os.path.join(self.save_path, f"{pid}_{index}_{ques_id}.png")
         plt.savefig(save_path, dpi=150)
 
     def __call__(self):
@@ -102,11 +109,9 @@ class Plotter:
 
         :return:
         """
-        for index in range(self.fpq_df.shape[0]):
+        for index in tqdm(range(self.fpq_df.shape[0])):
             question_ids = self.fpq_df['QuestionId'].tolist()
             ques_id = question_ids[index]
             img_path, img_features_path = self.get_image_and_feat_path(ques_id)
-            self.plot(img_path, img_features_path, ques_id, index)
-
-
-
+            pid = self.participant_id[index]
+            self.plot(img_path, img_features_path, ques_id, index, pid)

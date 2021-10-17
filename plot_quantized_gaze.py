@@ -1,7 +1,9 @@
 import argparse
 import os
 
-home = os.path.dirname(__file__)
+from gaze_quantization_plotter.plotter import Plotter
+
+home = os.path.dirname(os.path.abspath(__file__))
 
 parser = argparse.ArgumentParser(
     description='Gaze quantization into objects and plotting',
@@ -21,12 +23,13 @@ parser.add_argument('--vqa_image_features_path', type=str,
                     default=os.path.join(home, 'data/features_val2014'),
                     help="VQA input images features path. for feature extraction, "
                          "refer to https://github.com/yuzcccc/bottom-up-attention")
-
+print('home', home)
 if __name__ == "__main__":
     args = parser.parse_args()
     plotter = Plotter(args)
-    try:
-        plotter()
-    except Exception as e:
-        print(e.message)
-        exit(-1)
+    plotter()
+    # try:
+    #     plotter()
+    # except Exception as e:
+    #     print(e)
+    #     exit(-1)
