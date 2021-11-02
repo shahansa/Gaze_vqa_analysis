@@ -65,4 +65,5 @@ python3 mcan_attention_visualization/img_attn_visualization.py
 * `v2_OpenEnded_mscoco_val2014_questions.json` : VQA-V2.0 question data
 * `question_ids.pkl` : Subset of question ids for which to plot attention, numpy array exported into pickle format. 
 
-
+## Citation and related work
+publication submitted. Will be available once review process is completed. 
